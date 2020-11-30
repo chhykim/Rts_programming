@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using CodeMonkey.Utils;
+
+
+public class OurMove : MonoBehaviour {
+
+
+	public Vector3 move_point;
+	private float pspeed = 2;
+	private float movespeed = 3;
+	public OriginalStatue OS;
+	public RaycastHit hit;
+	public int targetPostionListIndex = 0;
+	public bool IsMoving = true;
+  
+  
+void MoveToPoint()
+	{
+		var rb = gameObject.GetComponent<Rigidbody>();
+
+		rb.isKinematic = false;
+
+	
+		Vector3 movepoint = move_point - transform.position;
+		Vector3 romovepoint = new Vector3(move_point.x, 0, move_point.z);
+
+		Quaternion hitrotate = Quaternion.LookRotation(movepoint);  
+    
+    
+    if( IsMoving )
+        {
+
+			if (Vector3.Distance(transform.position, move_point) > pspeed * 2 / 15)
+			{
+
+				transform.position = Vector3.MoveTowards(transform.position, move_point, Time.deltaTime * movespeed);
+
+
+				var ani = gameObject.GetComponent<Animator>();
+				ani.SetBool("Move_on", true);
+
+
+			}
+			else
+			{
+				move_on = 0;
+
+				var ani = GetComponent<Animator>();
+				ani.SetBool("Move_on", false);
+
+				IsMoving = false;
+			}
+
+		}
+    
+    
+  }
+  
+}
