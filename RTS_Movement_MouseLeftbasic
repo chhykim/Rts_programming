@@ -10,8 +10,8 @@ public class UnitSelectionComponent : MonoBehaviour
 	public Vector3 MouseOriginPosition;
 	public GameObject target = null;
 	private System.Random _rnd = new System.Random();
-  private bool isSelecting = false;
-  public GameObject selectionCirclePrefab;
+ 	private bool isSelecting = false;
+  	public GameObject selectionCirclePrefab;
 	SelectObjext selectableObject;
   
   if ( Input.GetMouseButtonDown( 0 ) )
@@ -59,16 +59,17 @@ public void MouseLeftClick()
         }
         
         foreach (var selectableObject in FindObjectsOfType<SelectableUnitComponent>())
-					{
-					     	selectableObject.playerselect = 1;
+		{			
+		selectableObject.playerselect = 1;
                 var ads = selectobject.GetComponent<OurMove> ();
-								ads.move_on = 1;
-								ads.IsMoving = true;
+		ads.move_on = 1;
+		ads.IsMoving = true;
 							
-								Vector3 pos = hit.point;
-								ads.move_point = pos; // sha sha
-								target = null;
-			  	}
+		Vector3 pos = hit.point;
+		ads.move_point = pos; // sha sha
+		target = null;
+		
+		}
           
           
         
