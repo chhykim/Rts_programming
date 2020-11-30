@@ -1,0 +1,80 @@
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+public class UnitSelectionComponent : MonoBehaviour
+{
+  
+  Vector3 mousePosition1;
+	public Vector3 MouseOriginPosition;
+	public GameObject target = null;
+	private System.Random _rnd = new System.Random();
+  private bool isSelecting = false;
+  public GameObject selectionCirclePrefab;
+	SelectObjext selectableObject;
+  
+  if ( Input.GetMouseButtonDown( 0 ) )
+     {
+            isSelecting = true;
+            mousePosition1 = Input.mousePosition;
+
+			
+			foreach ( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
+            {
+			        	selectableObject.playerselect = 0;     
+            }
+
+			MouseLeftClick ();
+        }
+        
+   if( Input.GetMouseButtonUp( 0 ) )
+        {
+    
+            isSelecting = false;
+        }
+        
+public void MouseLeftClick()
+	{
+
+		//main camera 
+		Ray HookRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+
+		//gs[0] = go;
+
+
+		if(Physics.Raycast(HookRay,out hit,1000))
+
+		{			
+	  		go = hit.collider.gameObject;
+	   		if (hit.collider.tag != "Enemy") {
+				if (hit.collider.tag != "Player") {
+        
+        if ( IsWithinSelectionBounds( selectableObject.gameObject ) )
+        {
+          selectedObjects.Add( selectableObject );		
+          var sds = selectobject.GetComponent<SelectableUnitComponent> ();
+					sds.playerselect = 1;
+        }
+        
+        foreach (var selectableObject in FindObjectsOfType<SelectableUnitComponent>())
+					{
+					     	selectableObject.playerselect = 1;
+                var ads = selectobject.GetComponent<OurMove> ();
+								ads.move_on = 1;
+								ads.IsMoving = true;
+							
+								Vector3 pos = hit.point;
+								ads.move_point = pos; // sha sha
+								target = null;
+			  	}
+          
+          
+        
+       
+				
+ }
+				
+        
+	
