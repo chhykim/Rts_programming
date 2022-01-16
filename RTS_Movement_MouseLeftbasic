@@ -1,3 +1,6 @@
+
+//직접 구현한 RTS오브젝트 움직임을 구현하기 위해서 만듬 
+
 using System;
 using System.Linq;
 using System.Collections;
@@ -13,6 +16,10 @@ public class UnitSelectionComponent : MonoBehaviour
  	private bool isSelecting = false;
   	public GameObject selectionCirclePrefab;
 	SelectObjext selectableObject;
+	
+	
+	//기본적으로 현 마우스 벡터 클릭한 오브젝트 클릭상태(불) 나머지는 클릭된 객체에 나타난 변화를 위한 오브젝터 변수를 설정
+	
   
   if ( Input.GetMouseButtonDown( 0 ) )
      {
